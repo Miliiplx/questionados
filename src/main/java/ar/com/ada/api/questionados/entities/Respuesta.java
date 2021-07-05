@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Respuesta {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "respuesta_id")
     private Integer respuestaId;
 
@@ -18,7 +18,7 @@ public class Respuesta {
 
     @ManyToOne
     @JoinColumn(name = "pregunta_id", referencedColumnName = "pregunta_id")
-    private Respuesta respuesta;
+    private Pregunta pregunta; //en el set de este objeto agrego la relacion bidereccional
 
     public Integer getRespuestaId() {
         return respuestaId;
@@ -44,13 +44,15 @@ public class Respuesta {
         this.esCorrecta = esCorrecta;
     }
 
-    public Respuesta getRespuesta() {
-        return respuesta;
+    public Pregunta getPregunta(){
+        return pregunta;
     }
 
-    public void setRespuesta(Respuesta respuesta) {
-        this.respuesta = respuesta;
+    public void setPreguta(Pregunta pregunta){
+        this.pregunta = pregunta;
+        this.pregunta.agregarRespuesta(this);
     }
+
 
     
 

@@ -21,6 +21,10 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Pregunta> preguntas = new ArrayList<>();
 
+    public void agregarPregunta(Pregunta pregunta){
+        this.preguntas.add(pregunta);
+    }
+
     public Integer getCategoriaId() {
         return categoriaId;
     }
