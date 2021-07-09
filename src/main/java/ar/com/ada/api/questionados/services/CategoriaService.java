@@ -15,32 +15,33 @@ public class CategoriaService {
     @Autowired
     CategoriaRepository repo;
 
-    public List<Categoria> traerCategorias(){
+    public List<Categoria> traerCategorias() {
         return repo.findAll();
     }
 
-    public Categoria buscarCategoriaPorId(Integer categoriaId){
+    public Categoria buscarCategoriaPorId(Integer categoriaId) {
 
         Optional<Categoria> resultado = repo.findById(categoriaId);
+        Categoria categoria = null;
 
-        if(resultado.isPresent())
+        if (resultado.isPresent())
             return resultado.get();
 
         return null;
-        
+
     }
 
-    public boolean crearCategoria(Categoria categoria){
-        if(existe(categoria.getNombre()))
+    public boolean crearCategoria(Categoria categoria) {
+        if (existe(categoria.getNombre()))
             return false;
 
         repo.save(categoria);
         return true;
     }
 
-    public boolean existe(String nombre){
+    public boolean existe(String nombre) {
         Categoria categoria = repo.findByNombre(nombre);
-        return categoria !=null;
+        return categoria != null;
     }
-    
+
 }
