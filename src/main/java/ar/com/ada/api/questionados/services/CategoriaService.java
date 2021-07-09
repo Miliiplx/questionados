@@ -29,5 +29,18 @@ public class CategoriaService {
         return null;
         
     }
+
+    public boolean crearCategoria(Categoria categoria){
+        if(existe(categoria.getNombre()))
+            return false;
+
+        repo.save(categoria);
+        return true;
+    }
+
+    public boolean existe(String nombre){
+        Categoria categoria = repo.findByNombre(nombre);
+        return categoria !=null;
+    }
     
 }
