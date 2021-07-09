@@ -60,6 +60,14 @@ public class Pregunta {
         this.opciones = respuestas;
     }
 
+    public List<Respuesta> getOpciones() {
+        return opciones;
+    }
+
+    public void setOpciones(List<Respuesta> opciones) {
+        this.opciones = opciones;
+    }
+
     
 
 
