@@ -14,6 +14,7 @@ public class PreguntaService {
     @Autowired
     PreguntaRepository repo;
 
+    @Autowired
     CategoriaService categoriaService;
 
     public List<Pregunta> traerPreguntas() {
